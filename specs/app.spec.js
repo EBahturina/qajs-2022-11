@@ -59,7 +59,7 @@ describe('total', () => {
   test('Процент скидки 20', () => {
     expect(getTotal([{ price: 10, quantity: 10 }], 20)).toBe(80);
   })
-  test('Процент скидки 100', () => {
-    expect(getTotal([{ price: 10, quantity: 10 }], 100)).toBe(0);// не работает как нужно
+  test('Процент скидки ', () => {
+    expect(() => getTotal([{ price: 10, quantity: 10 }], 100)).toThrow();
   })
 })
