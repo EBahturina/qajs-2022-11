@@ -17,5 +17,5 @@ const getScore = () => {
     for (let key in scores) {
       sumScores = sumScores + scores[key];
     };
-    console.log(sumScores)
+    return sumScores
   };
