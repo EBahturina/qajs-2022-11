@@ -1,5 +1,6 @@
 import user from  "../services/user"
 import config from "../config/config";
+import supertest from "supertest";
 
 describe('Api Test Controllers', () => {
 
@@ -11,7 +12,14 @@ describe('Api Test Controllers', () => {
     })
 
     test('POST - /Account/v1/User - Error', async () => {
-        const response = await user.registration_fake(config.credentials_fails)
+        const response = await supertest('https://bookstore.demoqa.com')
+        .post('/Account/v1/User')
+        .set("Accept", "application/json")
+        .set("Content-Type", "application/json") 
+        .send({
+            userName: 'sv',
+            password: 'Qwe'
+          })
         expect(response.status).toEqual(400)
         
         
@@ -25,8 +33,8 @@ describe('Api Test Controllers', () => {
     test('GET- /Account/v1/{UUID}', async () => {
         const response = await user.infoUser(user.getUserID())
         const response_body = await response.json;
-        console.log(response_body.userID)
-        expect(response_body).not.toBeNull()
+        expect(response.status).toBe(200) // пыталась написать проверку:на сравниевание user.getUserID()(эта же функция должна возвращать UserID) и о, что придет в ответе, но получала ошибку
+        
     })
 
     test('GET- /Account/v1/{UUID} -Error', async () => {
@@ -36,6 +44,6 @@ describe('Api Test Controllers', () => {
 
     test('DELETE- /Account/v1/{UUID}', async () => {
         const response = await user.deleteUserId(user.getUserID())
-        expect(response.body).not.toBeNull()
+        expect(response.status).toEqual(200)
     })
 })

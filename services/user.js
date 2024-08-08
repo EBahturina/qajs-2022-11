@@ -4,7 +4,7 @@ const {url} = config;
 //
 const user = {
 
-    autorization: (payload = config.credentials) => {
+    autorization: (payload = config.credentials) => {  //не понятно,почему без указания в скобочка payload = config.credentials и использования функции в тесте - тест падал с ошибкой, что  autorization не является функйией
         return supertest(url)
         .post('/Account/v1/Authorized')
         .set("Accept", "application/json")
@@ -18,14 +18,7 @@ const user = {
         .set("Content-Type", "application/json") 
         .send(payloadR)
     },
-    registration_fake: (payloadF = config.credentials_fails) => {
-        return supertest(url)
-        .post('/Account/v1/User')
-        .set("Accept", "application/json")
-        .set("Content-Type", "application/json") 
-        .send(payloadF)
-    },
-
+    
     async getUserID() {
         const payloadR = config.credentials_registration
         const respons = await this.registration(payloadR)

@@ -9,11 +9,7 @@ const config = {
       credentials_registration: {
         userName: 'vova',
         password: `Qwerty${password}*`
-      },
-      credentials_fails: {
-        userName: 'sv',
-        password: 'Qwe'
-      },
+      }
       
 }
 export default config;
