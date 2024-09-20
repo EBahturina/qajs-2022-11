@@ -2,3 +2,4 @@ node_modules
 coverage
 .idea
 .eslintcache
+jest-html-report
