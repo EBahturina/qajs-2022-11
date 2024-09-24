@@ -3,3 +3,7 @@ coverage
 .idea
 .eslintcache
 jest-html-report
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

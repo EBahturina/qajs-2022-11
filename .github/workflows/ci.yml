@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-         node-version: 20.11.0q  
+         node-version: 20.15.0 
          cache: 'npm'
       - run: npm ci
       - run: npm run lint:ci
@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-         node-version: 20.11.0
+         node-version: 20.15.0
          cache: 'npm'
       - run: npm ci
       - run: npm run format:ci
